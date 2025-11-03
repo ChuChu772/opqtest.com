@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-<title>GSAP 進場動畫</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+<title>good</title>
 <head>
   <meta charset="UTF-8">
   <title>影片範例</title>
@@ -25,7 +25,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      outline: blue 1px solid;
     }
     .word{
         width: 90%;
@@ -36,7 +35,7 @@
       justify-content: space-between;
     }
     .videogo {
-      width: 100%;
+      width: 90%;
       height: 75%;
       display: flex;
       position: relative;
@@ -44,10 +43,33 @@
       /* align-items: center; */
       overflow: hidden;
     }
+    .cover {
+        display: flex;
+      position: absolute;
+      width: 101%;
+      height: 101%;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      font-family: "Merriweather", serif;
+      color: rgb(7, 24, 255);
+      background-color: black;
+      z-index: 2;
+      /* opacity: 0; */
+    }
+    .name{
+        display: flex;
+        height: 6rem;
+        width: 6rem;
+        padding: 1rem;
+        border-radius: 6rem;
+        background-color: #fff;
+        justify-content: center;
+        align-items: center;
+    }
     .go {
       height: 100%;
       width: 100%;
-      padding: 0 5vw;
       display: flex;
       position: relative;
       object-fit: cover;
@@ -86,6 +108,9 @@
        </div>
     </div>
   <div class="videogo">
+    <div class="cover" id="cover">
+        <div class="name"><p>OPQ</p></div>
+    </div>
     <div class="go">
         <video  id="myVideo" loop>
             <source src="repeat.mp4" type="video/mp4">
@@ -108,17 +133,16 @@
   const pbtn = document.getElementById('playBtn');
   const soundBtn = document.getElementById('soundBtn');
   const soundIcon = document.getElementById('soundIcon');
+  const cover = document.getElementById('cover');
 
     soundBtn.addEventListener('click', () => {
-      // 切換靜音狀態
       video.muted = !video.muted;
-
-      // 更新圖示
       soundIcon.textContent = video.muted ? 'volume_off' : 'volume_up';
     });
   pbtn.addEventListener('click', () => {
     if (video.paused) {
       video.play();
+      cover.style.display = 'none';
     } 
   });
 </script>
