@@ -1,0 +1,126 @@
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+<title>GSAP 進場動畫</title>
+<head>
+  <meta charset="UTF-8">
+  <title>影片範例</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+    }
+    .all {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      outline: blue 1px solid;
+    }
+    .word{
+        width: 90%;
+        height: 10%;
+        display: flex;
+        color: white;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .videogo {
+      width: 100%;
+      height: 75%;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      /* align-items: center; */
+      overflow: hidden;
+    }
+    .go {
+      height: 100%;
+      width: 100%;
+      padding: 0 5vw;
+      display: flex;
+      position: relative;
+      object-fit: cover;
+    }
+    .go video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .controls {
+      width: 90%;
+      height: 10%;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(85, 85, 85);
+      border-radius: 5rem;
+      margin: 1rem 1rem 1rem 1rem;
+    }
+    .controls button {
+      transform: scale(1.5);
+      background-color: rgb(208, 208, 208);
+      border-radius: 10rem;
+      padding: 0.4rem 0.7rem;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="all">
+        <div class="word">
+        <p>My video name</p>
+        <div id="soundBtn">
+            <span class="material-symbols-outlined" id="soundIcon">volume_up</span>
+       </div>
+    </div>
+  <div class="videogo">
+    <div class="go">
+        <video  id="myVideo" loop>
+            <source src="repeat.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+        </video>
+    </div>
+  </div>
+  <div class="controls" >
+      <button class="play" id="playBtn">
+        <span class="material-symbols-outlined">
+        computer_arrow_up
+        </span>
+      </button>
+  </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+  </script>
+  <script>
+  const video = document.getElementById('myVideo');
+  const pbtn = document.getElementById('playBtn');
+  const soundBtn = document.getElementById('soundBtn');
+  const soundIcon = document.getElementById('soundIcon');
+
+    soundBtn.addEventListener('click', () => {
+      // 切換靜音狀態
+      video.muted = !video.muted;
+
+      // 更新圖示
+      soundIcon.textContent = video.muted ? 'volume_off' : 'volume_up';
+    });
+  pbtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+    } 
+  });
+</script>
+  
+</body>
